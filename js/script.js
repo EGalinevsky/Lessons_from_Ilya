@@ -8,45 +8,44 @@ let input2 = document.getElementById('number_2');
 
 let answer = document.getElementById('answer');
 
+function getNumber1(){
+    return Number(input1.value);
+}
+function getNumber2(){
+    return Number(input2.value);
+}
 
 
-function onButtonPlusCLick(){
+function makeOperation(operationCode){
 
-    let number_1 = Number(input1.value);
-    let number_2 = Number(input2.value);
+    if (operationCode === '+') {
+        var result = getNumber1() + getNumber2();  
+        
+    } else if (operationCode === '-') {
+        var result = getNumber1() - getNumber2();
 
-    let result = number_1 + number_2;   
+    } else if (operationCode === '*') {
+        var result = getNumber1() * getNumber2();
 
+    } else if (operationCode === '/') {
+        var result = getNumber1() / getNumber2();
+    } 
+         
     document.getElementById('answer'). innerText = '=' + result;
 }
 
+function onButtonPlusCLick() {
+    makeOperation('+'); 
+}
 
 function onButtonMimusCLick(){
-
-    let number_1 = Number(input1.value);
-    let number_2 = Number(input2.value);
-
-    let result = number_1 - number_2;
-
-    document.getElementById('answer'). innerText = '=' + result;
+    makeOperation('-'); 
 }
 function onButtonMultiCLick(){
-
-    let number_1 = Number(input1.value);
-    let number_2 = Number(input2.value);
-
-    let result = number_1 * number_2;
-
-    document.getElementById('answer'). innerText = '=' + result;
+    makeOperation('*'); 
 }
 function onButtonDivideCLick(){
-
-    let number_1 = Number(input1.value);
-    let number_2 = Number(input2.value);
-
-    let result = number_1 / number_2;
-
-    document.getElementById('answer'). innerText = '=' + result;
+    makeOperation('/'); 
 }
 
 buttonSum.addEventListener('click', onButtonPlusCLick);
